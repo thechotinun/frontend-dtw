@@ -17,7 +17,7 @@
     }
   }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 575px) {
     /* For mobile phones: */
 
     .sign-in {
@@ -28,10 +28,16 @@
     }
     .sider-menu {
         display: none;
+    }
+    .inp-search {
+        display: none;
+    }
+    .icon-search {
+        display: block;
     }
   }
 
-@media only screen and (min-width: 375px) {
+@media only screen and (min-width: 575px) {
     /* For mobile phones: */
 
     .sign-in {
@@ -42,5 +48,11 @@
     }
     .sider-menu {
         display: block;
+    }
+    .inp-search {
+        display: block;
+    }
+    .icon-search {
+        display: none;
     }
   }

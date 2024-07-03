@@ -13,10 +13,13 @@ export default function Search() {
 
   return (
     <Row gutter={[16, 8]} style={{ alignItems: "center" }}>
-      <Col xs={24} sm={24} md={12} lg={15}>
+      <Col xs={24} sm={24} md={12} lg={15} className="inp-search">
         <Input prefix={<SearchOutlined />} placeholder="Search" allowClear />
       </Col>
-      <Col xs={12} sm={12} md={7} lg={5} style={{ textAlign: "center" }}>
+      <Col xs={6} sm={24} md={12} lg={15} className="icon-search">
+        <SearchOutlined />
+      </Col>
+      <Col xs={10} sm={12} md={7} lg={5} style={{ textAlign: "right" }}>
         <Select
           showSearch
           placeholder="Community"
@@ -43,7 +46,7 @@ export default function Search() {
           ]}
         />
       </Col>
-      <Col xs={12} sm={12} md={5} lg={4} style={{ textAlign: "center" }}>
+      <Col xs={8} sm={12} md={5} lg={4} style={{ textAlign: "right" }}>
         <Button
           style={{
             color: "#FFFFFF",
