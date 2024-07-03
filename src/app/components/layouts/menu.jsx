@@ -31,7 +31,7 @@ const SiderMenu = () => {
 
   return (
     <>
-      <Sider width={280} className="sider-menu">
+      <Sider width={"100%"} className="sider-menu">
         <Menu
           mode="inline"
           defaultSelectedKeys={[pathname]}
