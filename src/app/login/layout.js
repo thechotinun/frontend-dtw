@@ -1,9 +1,4 @@
 
-
-export const metadata = {
-  title: "Login-dtw",
-};
-
 export default function LoginLayout({ children }) {
   return (
     <div>

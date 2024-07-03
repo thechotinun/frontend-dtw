@@ -8,6 +8,7 @@ import {
   HomeOutlined,
   FormOutlined,
 } from "@ant-design/icons";
+import { useRouter } from 'next/navigation'
 import "./css/layoutMain.css";
 
 const castoro = Castoro({ subsets: ["latin"], weight: "400", style: "italic" });
@@ -20,7 +21,9 @@ const items = new Array(3).fill(null).map((_, index) => ({
 }));
 
 const HeaderMain = () => {
+  const router = useRouter()
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <Header
@@ -56,6 +59,7 @@ const HeaderMain = () => {
               borderColor: "#49A569",
               backgroundColor: "#49A569",
             }}
+            onClick={() => router.push('/login')}
           >
             Sign In
           </Button>

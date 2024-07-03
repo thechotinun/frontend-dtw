@@ -12,11 +12,11 @@ export default function Search() {
   };
 
   return (
-    <Row gutter={16} style={{ alignItems: "center" }}>
-      <Col span={15}>
+    <Row gutter={[16, 8]} style={{ alignItems: "center" }}>
+      <Col xs={24} sm={24} md={12} lg={15}>
         <Input prefix={<SearchOutlined />} placeholder="Search" allowClear />
       </Col>
-      <Col span={5}>
+      <Col xs={12} sm={12} md={7} lg={5} style={{ textAlign: "center" }}>
         <Select
           showSearch
           placeholder="Community"
@@ -24,7 +24,8 @@ export default function Search() {
           onChange={onChange}
           onSearch={onSearch}
           style={{
-            width: "100%"
+            width: "100%",
+            maxWidth: "128px",
           }}
           options={[
             {
@@ -42,11 +43,12 @@ export default function Search() {
           ]}
         />
       </Col>
-      <Col span={4} style={{ textAlign: "center" }}>
+      <Col xs={12} sm={12} md={5} lg={4} style={{ textAlign: "center" }}>
         <Button
           style={{
             color: "#FFFFFF",
-            width: "105px",
+            width: "100%",
+            maxWidth: "105px",
             height: "40px",
             borderRadius: "8px",
             borderColor: "#49A569",

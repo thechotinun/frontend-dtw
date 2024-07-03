@@ -2,24 +2,33 @@
 
 import { Layout, Menu } from "antd";
 import { HomeOutlined, FormOutlined } from "@ant-design/icons";
+import { usePathname } from 'next/navigation'
+import { useEffect } from "react";
+import Link from 'next/link';
 import "./css/layoutMain.css";
 
 const items = [
   {
-    key: 1,
+    key: '/',
     icon: <HomeOutlined style={{ fontSize: "18px" }} />,
-    label: `Home`,
+    label: <Link href="/">Home</Link>,
   },
   {
-    key: 2,
+    key: '/ourblog',
     icon: <FormOutlined style={{ fontSize: "18px" }} />,
-    label: `Our Blog`,
+    label: <Link href="/ourblog">Our Blog</Link>,
   },
 ];
 
 const { Sider } = Layout;
 
 const SiderMenu = () => {
+  const pathname = usePathname()
+
+  useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
+
   return (
     <>
       <Sider
@@ -28,7 +37,7 @@ const SiderMenu = () => {
       >
         <Menu
           mode="inline"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={[pathname]}
           items={items}
           style={{
             width: "100%",

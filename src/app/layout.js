@@ -1,14 +1,8 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { Layout } from "antd";
 import HeaderMain from "./components/layouts/header";
 import SiderMenu from "./components/layouts/menu";
 import ContentMain from "./components/layouts/content";
 import { Row, Col } from "antd";
-
-const { Content } = Layout;
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Home-dtw",
@@ -22,10 +16,10 @@ export default function RootLayout({ children }) {
         <div style={{ height: "100%", background: "#BBC2C0" }}>
           <HeaderMain />
           <Row>
-            <Col span={6}>
+            <Col xs={0} sm={6} md={6} lg={6}>
               <SiderMenu />
             </Col>
-            <Col span={12}>
+            <Col offset={1} xs={22} sm={12} md={12} lg={12}>
               <main>
                 <ContentMain>{children}</ContentMain>
               </main>

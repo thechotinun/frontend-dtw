@@ -110,3 +110,17 @@ a {
 .ant-layout {
   background: #BBC2C0;
 }
+
+@media only screen and (max-width: 375px) {
+  /* For mobile phones: */
+  .sider-menu {
+      display: none;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  /* For mobile phones: */
+  .sider-menu {
+      display: block;
+  }
+}
