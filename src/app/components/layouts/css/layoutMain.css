@@ -3,6 +3,13 @@
     padding: 10px 7px 10px 10px;
 }
 
+.ant-menu-item-selected {
+    background-color: #BBC2C0 !important;
+    color: #000000 !important;
+    font-weight: 800;
+}
+
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .box-logo {
@@ -19,6 +26,9 @@
     .list-menu {
         display: block;
     }
+    .sider-menu {
+        display: none;
+    }
   }
 
 @media only screen and (min-width: 375px) {
@@ -29,5 +39,8 @@
     }
     .list-menu {
         display: none;
+    }
+    .sider-menu {
+        display: block;
     }
   }
