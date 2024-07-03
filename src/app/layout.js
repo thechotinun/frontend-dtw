@@ -14,15 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div style={{ height: "100%", background: "#BBC2C0" }}>
-          <HeaderMain />
-          <Row style={{ height: "100%" }}>
-            <Col xs={0} sm={6} md={6} lg={6}>
-              <SiderMenu />
-            </Col>
-            {/* <Col xs={24} sm={12} md={12} lg={12}> */}
-              <ContentMain>{children}</ContentMain>
-            {/* </Col> */}
-          </Row>
+          <main style={{ height: "100%" }}>
+            {children}
+          </main>
         </div>
       </body>
     </html>

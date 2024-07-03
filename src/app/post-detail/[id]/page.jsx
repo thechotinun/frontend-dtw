@@ -6,6 +6,6 @@ const { Title } = Typography;
 
 export default function PostDetail({params}) {
   console.log(params);
-  return <div>PostDetail</div>
+  return <div style={{ background: "#FFFFFF", height: "100%" }}>PostDetail</div>
 }
 
