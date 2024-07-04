@@ -13,11 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div style={{ height: "100%", background: "#BBC2C0" }}>
-          <main style={{ height: "100%" }}>
-            {children}
-          </main>
-        </div>
+        <main style={{ height: "100%" }}>{children}</main>
       </body>
     </html>
   );

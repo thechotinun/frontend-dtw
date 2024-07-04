@@ -16,16 +16,10 @@ export default function LayoutMain({ children }) {
     <Layout style={{ height: "100%" }}>
       <HeaderMain />
       <Layout style={{ height: "100%" }}>
-        <Col xs={0} sm={5} md={5} lg={5}>
+        <Col xs={0} sm={5} md={5} lg={5} style={{ height: "100%" }}>
           <SiderMenu />
         </Col>
-        <Layout
-          style={{
-            height: "100%",
-          }}
-        >
-          {children}
-        </Layout>
+        {children}
       </Layout>
     </Layout>
   );

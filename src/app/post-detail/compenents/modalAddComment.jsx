@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 const { TextArea } = Input;
 
-export default function ModalAddComment({ isModalOpen }) {
+export default function ModalAddComment({ isModalOpen, setIsModalOpen }) {
   const router = useRouter();
   const [formComment] = Form.useForm();
   const [modal, contextHolder] = Modal.useModal();
@@ -40,17 +40,19 @@ export default function ModalAddComment({ isModalOpen }) {
       <Row style={{ marginTop: 24 }}>
         <Col span={24} style={{ marginBottom: "5px" }}>
           <Button
-            onClick={handleCancel}
             style={{
               width: "100%",
               color: "#49A569",
               width: "100%",
-            //   maxWidth: "105px",
+              //   maxWidth: "105px",
               height: "40px",
               borderRadius: "8px",
               borderColor: "#49A569",
               // backgroundColor: "#49A569",
               marginRight: "10px",
+            }}
+            onClick={() => {
+              setIsModalOpen(!isModalOpen);
             }}
           >
             Cancel
@@ -64,7 +66,7 @@ export default function ModalAddComment({ isModalOpen }) {
               width: "100%",
               color: "#FFFFFF",
               width: "100%",
-            //   maxWidth: "105px",
+              //   maxWidth: "105px",
               height: "40px",
               borderRadius: "8px",
               borderColor: "#49A569",

@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const { Paragraph, Title, Text } = Typography;
-
+const item = [1, 2, 3, 4];
 export default function Card() {
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
@@ -23,51 +23,62 @@ export default function Card() {
         borderRadius: "12px",
       }}
     >
-      <Col span={24} style={{ display: "flex", alignItems: "center" }}>
-        <div className="circle" style={{ marginRight: "4px" }}>
-          <Image
-            src="/img/1.jpeg"
-            alt="Circle Image"
-            width={31}
-            height={31}
-            className="circleImage"
-          />
-        </div>
-        <Text style={{ color: "#939494" }}>Wittawat</Text>
-      </Col>
-      <Col span={24}>
-        <Tag>History</Tag>
-      </Col>
-      <Col span={24}>
-        <Title level={5}>The Beginning of the End of the World</Title>
-      </Col>
-      <Col span={24}>
-        <Paragraph
-          ellipsis={{
-            rows: 2,
-            expandable: "collapsible",
-            expanded,
-            onExpand: (_, info) => setExpanded(info.expanded),
-          }}
-        >
-          The afterlife sitcom The Good Place comes to its culmination, the
-          show’s two protagonists, Eleanor and Chidi, contemplate their future.
-          Having lived thousands upon thousands of lifetimes together, and
-          having experienced virtually everything this life has to offer, they
-          are weary. It is time for it all to end. The show’s solution to this
-          perpetual happiness-cum-weariness is extinction. When you have had
-          enough, when you are utterly sated by love and joy and pleasure, you
-          can walk through a passage to nothingness. And Chidi has had enough.
-        </Paragraph>
-      </Col>
-      <Col
-        span={24}
-        style={{ cursor: "pointer" }}
-        onClick={() => router.push(`/post-detail/${1}`)}
-      >
-        <CommentOutlined style={{ fontSize: "18px", marginRight: "4px" }} />
-        <Text>32 Comments</Text>
-      </Col>
+      {item?.length &&
+        item.map((e) => {
+          return (
+            <React.Fragment key={e}>
+              <Col span={24} style={{ display: "flex", alignItems: "center" }}>
+                <div className="circle" style={{ marginRight: "4px" }}>
+                  <Image
+                    src="/img/1.jpeg"
+                    alt="Circle Image"
+                    width={31}
+                    height={31}
+                    className="circleImage"
+                  />
+                </div>
+                <Text style={{ color: "#939494" }}>Wittawat</Text>
+              </Col>
+              <Col span={24}>
+                <Tag>History</Tag>
+              </Col>
+              <Col span={24}>
+                <Title level={5}>The Beginning of the End of the World</Title>
+              </Col>
+              <Col span={24}>
+                <Paragraph
+                  ellipsis={{
+                    rows: 2,
+                    expandable: "collapsible",
+                    expanded,
+                    onExpand: (_, info) => setExpanded(info.expanded),
+                  }}
+                >
+                  The afterlife sitcom The Good Place comes to its culmination,
+                  the show’s two protagonists, Eleanor and Chidi, contemplate
+                  their future. Having lived thousands upon thousands of
+                  lifetimes together, and having experienced virtually
+                  everything this life has to offer, they are weary. It is time
+                  for it all to end. The show’s solution to this perpetual
+                  happiness-cum-weariness is extinction. When you have had
+                  enough, when you are utterly sated by love and joy and
+                  pleasure, you can walk through a passage to nothingness. And
+                  Chidi has had enough.
+                </Paragraph>
+              </Col>
+              <Col
+                span={24}
+                style={{ cursor: "pointer" }}
+                onClick={() => router.push(`/post-detail/${1}`)}
+              >
+                <CommentOutlined
+                  style={{ fontSize: "18px", marginRight: "4px" }}
+                />
+                <Text>32 Comments</Text>
+              </Col>
+            </React.Fragment>
+          );
+        })}
     </Row>
   );
 }

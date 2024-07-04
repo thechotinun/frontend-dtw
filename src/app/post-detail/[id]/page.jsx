@@ -13,10 +13,11 @@ const { TextArea } = Input;
 
 export default function PostDetail({ params }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpenTextArea, setIsOpenTextArea] = useState(false);
   console.log(params);
   return (
     <>
-      <Row style={{ background: "#FFFFFF", height: "100%" }}>
+      <Row style={{ height: "100%" }}>
         <Col
           xs={{
             flex: "5%",
@@ -99,55 +100,71 @@ export default function PostDetail({ params }) {
                 />
                 <Text>32 Comments</Text>
               </Col>
-              <Col span={24}>
-                <Button
-                  style={{
-                    color: "#49A569",
-                    width: "100%",
-                    maxWidth: "132px",
-                    height: "40px",
-                    borderRadius: "8px",
-                    borderColor: "#49A569",
-                    // backgroundColor: "#49A569",
-                    marginRight: "10px",
-                  }}
-                >
-                  Add Comments
-                </Button>
-              </Col>
+              {isOpenTextArea ? (
+                <Col span={24}>
+                  <Button
+                    style={{
+                      color: "#49A569",
+                      width: "100%",
+                      maxWidth: "132px",
+                      height: "40px",
+                      borderRadius: "8px",
+                      borderColor: "#49A569",
+                      // backgroundColor: "#49A569",
+                      marginRight: "10px",
+                    }}
+                    onClick={() => {
+                      // setIsOpenTextArea(!isOpenTextArea);
+                      if (window.innerWidth <= 575) {
+                        setIsModalOpen(!isModalOpen);
+                      } else {
+                        setIsOpenTextArea(!isOpenTextArea);
+                      }
+                    }}
+                  >
+                    Add Comments
+                  </Button>
+                </Col>
+              ) : (
+                <>
+                  <Col span={24}>
+                    <TextArea rows={4} placeholder="What's on your mind..." />
+                  </Col>
+                  <Col span={24} style={{ textAlign: "right" }}>
+                    <Button
+                      style={{
+                        color: "#49A569",
+                        width: "100%",
+                        maxWidth: "105px",
+                        height: "40px",
+                        borderRadius: "8px",
+                        borderColor: "#49A569",
+                        // backgroundColor: "#49A569",
+                        marginRight: "10px",
+                      }}
+                      onClick={() => {
+                        setIsOpenTextArea(!isOpenTextArea);
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      style={{
+                        color: "#FFFFFF",
+                        width: "100%",
+                        maxWidth: "105px",
+                        height: "40px",
+                        borderRadius: "8px",
+                        borderColor: "#49A569",
+                        backgroundColor: "#49A569",
+                      }}
+                    >
+                      Post
+                    </Button>
+                  </Col>
+                </>
+              )}
               <Comments />
-              {/* <Col span={24}>
-              <TextArea rows={4} placeholder="What's on your mind..." />
-            </Col>
-            <Col span={24} style={{textAlign: "right"}}>
-              <Button
-                style={{
-                  color: "#49A569",
-                  width: "100%",
-                  maxWidth: "105px",
-                  height: "40px",
-                  borderRadius: "8px",
-                  borderColor: "#49A569",
-                  // backgroundColor: "#49A569",
-                  marginRight: "10px"
-                }}
-              >
-                Cancel
-              </Button>
-              <Button
-                style={{
-                  color: "#FFFFFF",
-                  width: "100%",
-                  maxWidth: "105px",
-                  height: "40px",
-                  borderRadius: "8px",
-                  borderColor: "#49A569",
-                  backgroundColor: "#49A569",
-                }}
-              >
-                Post
-              </Button>
-            </Col> */}
             </>
           </Row>
         </Col>
@@ -166,7 +183,7 @@ export default function PostDetail({ params }) {
           }}
         ></Col>
       </Row>
-      <ModalAddComment isModalOpen={isModalOpen} />
+      <ModalAddComment isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     </>
   );
 }

@@ -11,12 +11,12 @@ const items = [
   {
     key: "/",
     icon: <HomeOutlined style={{ fontSize: "18px" }} />,
-    label: <Link href="/">Home</Link>,
+    label: <Link href="/" style={{ fontSize: "15px"}}>Home</Link>,
   },
   {
     key: "/ourblog",
     icon: <FormOutlined style={{ fontSize: "18px" }} />,
-    label: <Link href="/ourblog">Our Blog</Link>,
+    label: <Link href="/ourblog" style={{ fontSize: "15px"}}>Our Blog</Link>,
   },
 ];
 

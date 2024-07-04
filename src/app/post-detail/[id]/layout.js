@@ -8,7 +8,7 @@ const { Content } = Layout;
 export default function PostDetailLayout({ children }) {
   return (
     <LayoutMain>
-      <Content>{children}</Content>
+      <Content style={{background: "#FFFFFF"}}>{children}</Content>
     </LayoutMain>
   );
 }
