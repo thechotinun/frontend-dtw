@@ -100,7 +100,7 @@ export default function PostDetail({ params }) {
                 />
                 <Text>32 Comments</Text>
               </Col>
-              {isOpenTextArea ? (
+              {!isOpenTextArea ? (
                 <Col span={24}>
                   <Button
                     style={{
@@ -114,7 +114,6 @@ export default function PostDetail({ params }) {
                       marginRight: "10px",
                     }}
                     onClick={() => {
-                      // setIsOpenTextArea(!isOpenTextArea);
                       if (window.innerWidth <= 575) {
                         setIsModalOpen(!isModalOpen);
                       } else {
