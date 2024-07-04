@@ -1,14 +1,16 @@
 "use client";
 
+import "./css/search.css"
+import React, { useState } from "react";
 import { Row, Col, Input, Select, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import CreatePost from "../modal-post/create-post";
+
 
 export default function Search() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const onChange = (value) => {
     console.log(`selected ${value}`);
-  };
-  const onSearch = (value) => {
-    console.log("search:", value);
   };
 
   return (
@@ -21,11 +23,9 @@ export default function Search() {
       </Col>
       <Col xs={10} sm={12} md={7} lg={5} style={{ textAlign: "right" }}>
         <Select
-          showSearch
           placeholder="Community"
           optionFilterProp="label"
           onChange={onChange}
-          onSearch={onSearch}
           style={{
             width: "100%",
             maxWidth: "128px",
@@ -57,10 +57,14 @@ export default function Search() {
             borderColor: "#49A569",
             backgroundColor: "#49A569",
           }}
+          onClick={()=>{
+            setIsModalOpen(!isModalOpen);
+          }}
         >
           Create +
         </Button>
       </Col>
+      <CreatePost isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     </Row>
   );
 }

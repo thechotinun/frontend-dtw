@@ -13,7 +13,7 @@ export default function Home() {
       <Col xs={24} sm={14} md={14} lg={14}>
         <Content style={{padding: "24px 15px 24px 15px",}}>
           <Search />
-          <Card />
+          <Card isOurBlog={false}/>
         </Content>
       </Col>
     </LayoutMain>

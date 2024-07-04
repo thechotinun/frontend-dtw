@@ -25,10 +25,6 @@ const { Sider } = Layout;
 const SiderMenu = () => {
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
-
   return (
     <>
       <Sider width={"100%"} className="sider-menu">

@@ -3,15 +3,24 @@
 import "./css/card.css";
 import React, { useState } from "react";
 import { Row, Col, Input, Select, Button, Typography, Tag } from "antd";
-import { SearchOutlined, CommentOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  CommentOutlined,
+  EditOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import UpdatePost from "../modal-post/update-post";
+import DeletePost from "../modal-post/delete-post";
 
 const { Paragraph, Title, Text } = Typography;
 const item = [1, 2, 3, 4];
-export default function Card() {
+export default function Card({ isOurBlog }) {
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
+  const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
 
   return (
     <Row
@@ -27,7 +36,7 @@ export default function Card() {
         item.map((e) => {
           return (
             <React.Fragment key={e}>
-              <Col span={24} style={{ display: "flex", alignItems: "center" }}>
+              <Col span={12} style={{ display: "flex", alignItems: "center" }}>
                 <div className="circle" style={{ marginRight: "4px" }}>
                   <Image
                     src="/img/1.jpeg"
@@ -38,6 +47,31 @@ export default function Card() {
                   />
                 </div>
                 <Text style={{ color: "#939494" }}>Wittawat</Text>
+              </Col>
+              <Col
+                span={12}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                }}
+              >
+                {isOurBlog && (
+                  <>
+                    <EditOutlined
+                      style={{ marginRight: "15px", fontSize: "18px" }}
+                      onClick={()=>{
+                        setIsModalUpdateOpen(!isModalUpdateOpen);
+                      }}
+                    />
+                    <DeleteOutlined
+                      style={{ fontSize: "18px", color: "red" }}
+                      onClick={()=>{
+                        setIsModalDeleteOpen(!isModalDeleteOpen);
+                      }}
+                    />
+                  </>
+                )}
               </Col>
               <Col span={24}>
                 <Tag>History</Tag>
@@ -68,7 +102,7 @@ export default function Card() {
               </Col>
               <Col
                 span={24}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", borderBottom: "1px solid #BBC2C0" }}
                 onClick={() => router.push(`/post-detail/${1}`)}
               >
                 <CommentOutlined
@@ -79,6 +113,8 @@ export default function Card() {
             </React.Fragment>
           );
         })}
+        <UpdatePost isModalUpdateOpen={isModalUpdateOpen} setIsModalUpdateOpen={setIsModalUpdateOpen}/>
+        <DeletePost isModalDeleteOpen={isModalDeleteOpen} setIsModalDeleteOpen={setIsModalDeleteOpen}/>
     </Row>
   );
 }
