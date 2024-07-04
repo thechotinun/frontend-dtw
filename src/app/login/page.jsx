@@ -1,15 +1,39 @@
 "use client";
 
 import "./css/login.css";
+import { useState, useEffect } from 'react';
 import { Castoro } from "@next/font/google";
 import { Form, Input, Button, Row, Col, Typography } from "antd";
 import Image from "next/image";
-// import LoginLayout from "./layout";
 
 const castoro = Castoro({ subsets: ["latin"], weight: "400", style: "italic" });
 const { Title } = Typography;
 
 export default function LoginPage() {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (values) => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await res.json();
+      setResponse(data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <>
       <Row
@@ -28,14 +52,14 @@ export default function LoginPage() {
         >
           <Row justify="center">
             <Col xs={22} sm={22} md={12} lg={12}>
-              <Form autoComplete="off">
-                <Col style={{textAlign: "left"}}>
+              <Form autoComplete="off" onFinish={handleSubmit}>
+                <Col style={{ textAlign: "left" }}>
                   <Title level={2} style={{ color: "#FFFFFF" }}>
                     Sign in
                   </Title>
                 </Col>
 
-                <Form.Item name={"username"}>
+                <Form.Item name={"userName"}>
                   <Input
                     placeholder="Username"
                     style={{
