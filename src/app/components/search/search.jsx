@@ -1,27 +1,57 @@
 "use client";
 
-import "./css/search.css"
+import "./css/search.css";
 import React, { useState } from "react";
 import { Row, Col, Input, Select, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import CreatePost from "../modal-post/create-post";
 
-
 export default function Search() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpenInpSearch, setIsOpenInpSearch] = useState(false);
   const onChange = (value) => {
     console.log(`selected ${value}`);
   };
 
   return (
     <Row gutter={[16, 8]} style={{ alignItems: "center" }}>
-      <Col xs={24} sm={24} md={12} lg={15} className="inp-search">
-        <Input prefix={<SearchOutlined />} placeholder="Search" allowClear />
+      <Col xs={isOpenInpSearch ? 24 : 0} sm={24} md={12} lg={15}>
+        <Input
+          prefix={
+            <SearchOutlined
+              style={{ fontSize: "18px" }}
+              onClick={() => {
+                setIsOpenInpSearch(!isOpenInpSearch);
+              }}
+            />
+          }
+          placeholder="Search"
+          allowClear
+        />
       </Col>
-      <Col xs={6} sm={24} md={12} lg={15} className="icon-search">
-        <SearchOutlined />
+      <Col
+        xs={!isOpenInpSearch ? 6 : 0}
+        sm={24}
+        md={12}
+        lg={15}
+        className="icon-search"
+      >
+        {!isOpenInpSearch && (
+          <SearchOutlined
+            style={{ fontSize: "18px" }}
+            onClick={() => {
+              setIsOpenInpSearch(!isOpenInpSearch);
+            }}
+          />
+        )}
       </Col>
-      <Col xs={10} sm={12} md={7} lg={5} style={{ textAlign: "right" }}>
+      <Col
+        xs={isOpenInpSearch ? 0 : 10}
+        sm={12}
+        md={7}
+        lg={5}
+        style={{ textAlign: "right" }}
+      >
         <Select
           placeholder="Community"
           optionFilterProp="label"
@@ -46,7 +76,13 @@ export default function Search() {
           ]}
         />
       </Col>
-      <Col xs={8} sm={12} md={5} lg={4} style={{ textAlign: "right" }}>
+      <Col
+        xs={isOpenInpSearch ? 0 : 8}
+        sm={12}
+        md={5}
+        lg={4}
+        style={{ textAlign: "right" }}
+      >
         <Button
           style={{
             color: "#FFFFFF",
@@ -57,14 +93,14 @@ export default function Search() {
             borderColor: "#49A569",
             backgroundColor: "#49A569",
           }}
-          onClick={()=>{
+          onClick={() => {
             setIsModalOpen(!isModalOpen);
           }}
         >
           Create +
         </Button>
       </Col>
-      <CreatePost isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+      <CreatePost isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </Row>
   );
 }

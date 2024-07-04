@@ -109,6 +109,7 @@ export default function Card({ isOurBlog }) {
                   style={{ fontSize: "18px", marginRight: "4px" }}
                 />
                 <Text>32 Comments</Text>
+                <Text style={{color:"blue"}}> Click! </Text>
               </Col>
             </React.Fragment>
           );
